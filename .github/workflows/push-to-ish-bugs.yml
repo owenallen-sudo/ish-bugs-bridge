@@ -6,19 +6,18 @@ on:
 jobs:
   pull-ish-bugs-from-codetrunk-and-push-to-github:
     runs-on: ubuntu-latest
-    steps:
       env:
-        SSH_PRIVATE_KEYP: ${{ secrets.MAIN_REPO_SSH_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.MAIN_REPO_SSH_KEY }}
       steps:
-	- name: Setup SSH environment
+        - name: Setup SSH environment
           run: |
-	    mkdir -p ~/.ssh
-	    echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed22519
-	    chmod 600 ~/.ssh/id_ed22519
-	    ssh-keyscan -t ed_22519 github.com >> ~/.ssh/known_hosts
+	        mkdir -p ~/.ssh
+	        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed22519
+	        chmod 600 ~/.ssh/id_ed22519
+	        ssh-keyscan -t ed_22519 github.com >> ~/.ssh/known_hosts
         - name: Clone from CodeTrunk
-	  run: |
-	    git clone --mirror https://repos.codetrunk.eu/owenallen-sudo/ish-bugs.git
-	    cd ish-bugs
-	    git remote add github-ish-bugs git@github.com:owenallen-sudo/ish-bugs.git
-	    git push github-ish-bugs 'refs/heads/*:refs/heads*' --force --prune
+          run: |
+            git clone --mirror https://repos.codetrunk.eu/owenallen-sudo/ish-bugs.git
+            cd ish-bugs
+            git remote add github-ish-bugs git@github.com:owenallen-sudo/ish-bugs.git
+            git push github-ish-bugs 'refs/heads/*:refs/heads*' --force --prune
