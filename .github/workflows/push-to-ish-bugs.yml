@@ -12,9 +12,9 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.MAIN_REPO_SSH_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed22519
-          chmod 600 ~/.ssh/id_ed22519
-          ssh-keyscan -t ed_22519 github.com >> ~/.ssh/known_hosts
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed_25519 github.com >> ~/.ssh/known_hosts
       - name: Clone from CodeTrunk
         run: |
           git clone --mirror https://repos.codetrunk.eu/owenallen-sudo/ish-bugs.git
