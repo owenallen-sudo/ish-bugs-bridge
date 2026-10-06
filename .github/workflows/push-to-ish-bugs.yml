@@ -20,4 +20,4 @@ jobs:
           git clone --mirror https://repos.codetrunk.eu/owenallen-sudo/ish-bugs.git ish-bugs
           cd ish-bugs
           git remote add github-ish-bugs git@github.com:owenallen-sudo/ish-bugs.git
-          git push github-ish-bugs 'refs/heads/*:refs/heads*' --force --prune
+          git push github-ish-bugs 'refs/heads/*:refs/heads/*' --force --prune
